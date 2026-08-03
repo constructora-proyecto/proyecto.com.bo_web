@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constructora Proyecto S.R.L.</title>
+<meta name="description" content="Constructora Proyecto S.R.L. — construcción y proyectos en Bolivia.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17181a;
+    --paper:#f0ede4;
+    --orange:#e8590c;
+    --blue:#3c5a72;
+    --line: rgba(23,24,26,0.28);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Oswald', sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* blueprint grid backdrop */
+  .grid-bg{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:0.35;
+    pointer-events:none;
+  }
+
+  .crop{
+    position:fixed;
+    width:22px;
+    height:22px;
+    z-index:5;
+    pointer-events:none;
+  }
+  .crop::before,.crop::after{content:'';position:absolute;background:var(--ink);}
+  .crop::before{width:100%;height:2px;top:50%;transform:translateY(-50%);}
+  .crop::after{height:100%;width:2px;left:50%;transform:translateX(-50%);}
+  .crop.tl{top:20px;left:20px;}
+  .crop.tr{top:20px;right:20px;}
+  .crop.bl{bottom:20px;left:20px;}
+  .crop.br{bottom:20px;right:20px;}
+
+  main{
+    position:relative;
+    z-index:1;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:80px 8vw;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--blue);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:28px;
+    animation:fadeUp 0.7s ease both;
+  }
+  .eyebrow::before{
+    content:'';
+    width:10px;height:10px;
+    background:var(--orange);
+    display:inline-block;
+    animation:blink 2.2s ease-in-out infinite;
+  }
+
+  h1{
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(2.6rem, 9vw, 7.2rem);
+    line-height:0.95;
+    letter-spacing:-0.01em;
+    margin:0 0 6px 0;
+    text-transform:uppercase;
+    animation:fadeUp 0.7s ease 0.08s both;
+  }
+  h1 span{color:var(--orange);}
+
+  .subhead{
+    font-size:clamp(1rem, 2vw, 1.3rem);
+    max-width:640px;
+    color:#3a3a38;
+    margin:18px 0 0 0;
+    font-weight:300;
+    border-left:3px solid var(--orange);
+    padding-left:18px;
+    animation:fadeUp 0.7s ease 0.16s both;
+  }
+
+  .coords{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.75rem;
+    color:var(--blue);
+    margin-top:36px;
+    letter-spacing:0.04em;
+    animation:fadeUp 0.7s ease 0.22s both;
+  }
+
+  .plan{
+    margin-top:64px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0;
+    border-top:1px solid var(--line);
+    animation:fadeUp 0.7s ease 0.3s both;
+  }
+  .plan a{
+    flex:1 1 220px;
+    position:relative;
+    padding:26px 22px 24px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    text-decoration:none;
+    color:var(--ink);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    transition:background 0.25s ease, color 0.25s ease;
+  }
+  .plan a:last-child{border-right:none;}
+  .plan a:hover, .plan a:focus-visible{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .plan a:hover .marker, .plan a:focus-visible .marker{
+    border-color:var(--orange);
+    color:var(--orange);
+  }
+  .plan a:hover .tag, .plan a:focus-visible .tag{color:var(--paper);opacity:0.6;}
+
+  .marker{
+    width:34px;height:34px;
+    border:2px solid var(--ink);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    transition:border-color 0.25s ease, color 0.25s ease;
+  }
+  .label{
+    font-family:'Oswald', sans-serif;
+    font-size:1.05rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:#66665f;
+    opacity:0.8;
+  }
+
+  footer{
+    position:relative;
+    z-index:1;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:#66665f;
+    padding:22px 8vw 30px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+    border-top:1px solid var(--line);
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0.25;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;}
+  }
+
+  @media (max-width: 620px){
+    .plan a{flex:1 1 100%; border-right:none;}
+    .crop{width:16px;height:16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="crop tl" aria-hidden="true"></div>
+<div class="crop tr" aria-hidden="true"></div>
+<div class="crop bl" aria-hidden="true"></div>
+<div class="crop br" aria-hidden="true"></div>
+
+<main>
+  <p class="eyebrow">Constructora · Bolivia</p>
+  <h1>Proyecto<span>.</span></h1>
+  <p class="subhead">Construimos con precisión de plano y solidez de obra. Cada proyecto, medido, trazado y entregado.</p>
+  <p class="coords">S 17°47' — W 63°10' · Santa Cruz, Bolivia</p>
+
+  <nav class="plan" aria-label="Redes sociales">
+    <a href="https://www.facebook.com/p/Constructora-Proyecto-SRL-100057228829690/?checkpoint_src=any" target="_blank" rel="noopener noreferrer">
+      <span class="marker">FB</span>
+      <span class="label">Facebook</span>
+      <span class="tag">/constructora-proyecto-srl</span>
+    </a>
+    <a href="https://www.linkedin.com/company/constructora-proyecto-s-r-l/?originalSubdomain=bo" target="_blank" rel="noopener noreferrer">
+      <span class="marker">IN</span>
+      <span class="label">LinkedIn</span>
+      <span class="tag">/company/constructora-proyecto</span>
+    </a>
+    <a href="https://www.instagram.com/constructora_proyecto/" target="_blank" rel="noopener noreferrer">
+      <span class="marker">IG</span>
+      <span class="label">Instagram</span>
+      <span class="tag">@constructora_proyecto</span>
+    </a>
+  </nav>
+</main>
+
+<footer>
+  <span>© <span id="year"></span> Constructora Proyecto S.R.L.</span>
+  <span>proyecto.com.bo</span>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
