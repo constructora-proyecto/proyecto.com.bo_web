@@ -9,7 +9,9 @@ Estas instrucciones se aplican a cualquier agente de IA que trabaje en este repo
 - Las ramas distintas de `main` son temporales y se usan para previsualización.
 - Una rama temporal puede mantenerse únicamente en el entorno local mientras el usuario revisa los cambios; no es obligatorio publicarla para una preview local.
 - La publicación de producción se realiza exclusivamente mediante GitHub Pages desde `main`.
-- No asumir que GitHub Pages proporciona una URL pública por rama. Salvo que el repositorio incorpore en el futuro un mecanismo de preview verificable, la previsualización debe ser local.
+- Repositorio de previews públicas: `constructora-proyecto/proyecto-com-bo-previews`.
+- Sitio base de previews: `https://constructora-proyecto.github.io/proyecto-com-bo-previews/`.
+- GitHub Pages no proporciona una URL independiente por rama o commit en este repositorio. Para una preview pública, copiar únicamente los archivos necesarios al repositorio de previews, dentro de un subdirectorio con el nombre normalizado de la rama temporal.
 
 ## Regla principal
 
@@ -25,7 +27,7 @@ Nunca fusionar, empujar directamente ni publicar cambios en `main` sin que el us
    - ejecutar `git diff --check`;
    - comprobar visualmente la página en escritorio y móvil cuando cambie su presentación;
    - conservar `CNAME` y cualquier configuración de publicación, salvo que el usuario solicite expresamente modificarlos.
-5. Mantener la rama sin publicar mientras el usuario revisa la preview local. Publicar la rama en GitHub solo cuando sea necesario crear el pull request o cuando el usuario lo solicite; subir una rama no genera por sí mismo una preview de GitHub Pages.
+5. Mantener la rama sin publicar mientras el usuario revisa la preview local. Publicar la rama en GitHub o crear una preview pública únicamente cuando el usuario lo solicite; subir una rama no genera por sí mismo una preview de GitHub Pages.
 
 ## Mostrar una previsualización local sin publicar la rama
 
@@ -58,11 +60,26 @@ Publicar la rama temporal únicamente cuando el usuario lo solicite o cuando sea
 4. Explicar que la rama en GitHub conserva el código para revisión, pero no tiene una URL de GitHub Pages propia y no modifica `proyecto.com.bo`.
 5. No configurar ningún proveedor de despliegue adicional sin una solicitud explícita del usuario.
 
+## Publicar una previsualización pública en GitHub Pages
+
+Usar esta modalidad únicamente cuando el usuario solicite una URL pública:
+
+1. Confirmar que la versión que se copiará corresponde exactamente al commit de la rama temporal que se desea revisar.
+2. Clonar o actualizar `constructora-proyecto/proyecto-com-bo-previews` y comprobar que su rama de publicación es `main`.
+3. Crear o actualizar un subdirectorio cuyo nombre coincida con el nombre normalizado de la rama temporal. Por ejemplo, `borrador-enlaces-instagram/`.
+4. Copiar únicamente los archivos necesarios para ejecutar el sitio. No copiar `CNAME`, `.git`, `AGENTS.md`, secretos ni configuración exclusiva de producción.
+5. Actualizar el índice del repositorio de previews cuando corresponda, ejecutar `git diff --check`, revisar el diff y publicar el cambio en la rama `main` del repositorio de previews.
+6. Esperar a que el despliegue de GitHub Pages termine correctamente. La URL tendrá la forma `https://constructora-proyecto.github.io/proyecto-com-bo-previews/<subdirectorio>/`.
+7. Verificar la URL pública en escritorio y móvil y comprobar específicamente el cambio solicitado; una respuesta HTTP exitosa no basta.
+8. Informar la rama y commit del sitio original, el commit del repositorio de previews y la URL verificada. Aclarar que la preview no modifica `proyecto.com.bo` y que todavía requiere aprobación explícita para producción.
+
+Si el nombre o la configuración del repositorio de previews cambia, obtener los datos actuales desde GitHub y actualizar estas instrucciones; no inventar URLs. Cuando una preview deje de ser necesaria, retirarla solo con autorización explícita del usuario.
+
 ## Solicitar aprobación
 
-Al presentar la preview local, indicar la rama local, el commit si existe, el estado publicado o sin publicar de la rama y la dirección `localhost`. Pedir al usuario que revise el resultado y que confirme explícitamente si desea aprobarlo y publicarlo en producción.
+Al presentar una preview, indicar la rama, el commit revisado, si es local o pública y su dirección verificada. Pedir al usuario que revise el resultado y que confirme explícitamente si desea aprobarlo y publicarlo en producción.
 
-Si el usuario pide ajustes, hacerlos en la misma rama temporal y mostrar nuevamente la preview local actualizada. La aprobación de una versión anterior no autoriza a publicar cambios posteriores que el usuario aún no haya visto.
+Si el usuario pide ajustes, hacerlos en la misma rama temporal y mostrar nuevamente la preview actualizada por el mismo medio. La aprobación de una versión anterior no autoriza a publicar cambios posteriores que el usuario aún no haya visto.
 
 ## Aprobar y publicar en producción
 
