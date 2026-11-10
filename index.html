@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Constructora Proyecto S.R.L.</title>
 <meta name="description" content="Constructora Proyecto S.R.L. — edificios y viviendas arquitectónicamente destacadas en Santa Cruz y toda Bolivia.">
-<link rel="icon" href="data:,">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="canonical" href="https://proyecto.com.bo/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -70,6 +71,7 @@
     display:block;
     width:140px;
     height:auto;
+    border-radius:24%;
     margin:0 auto 32px;
     animation:fadeUp 0.7s ease both;
   }
@@ -165,7 +167,7 @@
     text-transform:uppercase;
     color:var(--blue);
   }
-  .plan a{
+  .plan > a, .ally-card{
     flex:1 1 220px;
     position:relative;
     padding:26px 22px 24px;
@@ -178,16 +180,16 @@
     gap:10px;
     transition:background 0.25s ease, color 0.25s ease;
   }
-  .plan a:last-child{border-right:none;}
-  .plan a:hover, .plan a:focus-visible{
+  .plan > a:last-child, .ally-card:last-child{border-right:none;}
+  .plan > a:hover, .plan > a:focus-visible{
     background:var(--ink);
     color:var(--paper);
   }
-  .plan a:hover .marker, .plan a:focus-visible .marker{
+  .plan > a:hover .marker, .plan > a:focus-visible .marker{
     border-color:var(--orange);
     color:var(--orange);
   }
-  .plan a:hover .tag, .plan a:focus-visible .tag{color:var(--paper);opacity:0.6;}
+  .plan > a:hover .tag, .plan > a:focus-visible .tag{color:var(--paper);opacity:0.6;}
 
   .marker{
     width:34px;height:34px;
@@ -211,6 +213,32 @@
     color:#66665f;
     opacity:0.8;
   }
+
+  .ally-logo{
+    width:68px; height:68px; object-fit:contain;
+    border-radius:12px; background:#fff;
+  }
+
+  .ally-links{display:flex; flex-wrap:wrap; gap:10px;}
+  .ally-links a{color:var(--ink); text-decoration:none;}
+  .ally-links a:hover, .ally-links a:focus-visible{
+    background:var(--ink); border-color:var(--orange); color:var(--orange);
+  }
+
+
+  .works{margin-top:80px; border-top:1px solid var(--line); padding-top:18px;}
+  .works-head{display:flex; justify-content:space-between; align-items:end; gap:20px; flex-wrap:wrap; margin-bottom:28px;}
+  .works-kicker{font:500 .7rem 'JetBrains Mono',monospace; letter-spacing:.12em; color:var(--blue); text-transform:uppercase; margin:0 0 12px;}
+  .works h2{font:400 clamp(2rem,5vw,4rem)/1 'Archivo Black',sans-serif; text-transform:uppercase; margin:0;}
+  .works-intro{max-width:360px; margin:0; color:#55554f; font-size:1rem;}
+  .works-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px 18px;}
+  .work{margin:0; min-width:0;}
+  .work img{display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:#ddd8cb;}
+  .work figcaption{border-bottom:1px solid var(--line); padding:14px 0 17px;}
+  .work h3{font:500 1.35rem 'Oswald',sans-serif; text-transform:uppercase; margin:0 0 7px;}
+  .work p{font:400 .7rem/1.6 'JetBrains Mono',monospace; color:#55554f; margin:0;}
+  @media(max-width:800px){.works-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media(max-width:520px){.works-grid{grid-template-columns:1fr;}.works{margin-top:60px;}}
 
   footer{
     position:relative;
@@ -240,7 +268,7 @@
   }
 
   @media (max-width: 620px){
-    .plan a{flex:1 1 100%; border-right:none;}
+    .plan > a, .ally-card{flex:1 1 100%; border-right:none;}
     .crop{width:16px;height:16px;}
   }
 </style>
@@ -266,6 +294,21 @@
     <span>Alcance nacional</span>
   </div>
 
+  <section class="works" aria-labelledby="works-title">
+    <div class="works-head"><div><p class="works-kicker">Nuestro trabajo / Bolivia</p><h2 id="works-title">Obras realizadas<span style="color:var(--orange)">.</span></h2></div><p class="works-intro">Una selección de edificios y viviendas que forman parte de nuestra trayectoria.</p></div>
+    <div class="works-grid">
+      <figure class="work"><img src="images/obras/aqua.jpg" alt="Aqua Tower en Santa Cruz" loading="lazy"><figcaption><h3>Aqua Tower</h3><p>Santa Cruz, Bolivia · 2022<br>8.303 m² construidos</p></figcaption></figure>
+      <figure class="work"><img src="images/obras/evolution.jpg" alt="Torres Evolution en Santa Cruz" loading="lazy"><figcaption><h3>Torres Evolution</h3><p>Santa Cruz, Bolivia · 2013 · 2018 · 2023<br>29.228,26 m² construidos</p></figcaption></figure>
+      <figure class="work"><img src="images/obras/fragata.jpg" alt="Edificio Fragata en Santa Cruz" loading="lazy"><figcaption><h3>Edificio Fragata</h3><p>Santa Cruz, Bolivia · 2015<br>7.135 m² construidos</p></figcaption></figure>
+      <figure class="work"><img src="images/obras/baruch.jpg" alt="Edificio Baruch en Santa Cruz" loading="lazy"><figcaption><h3>Edificio Baruch</h3><p>Santa Cruz, Bolivia · 2013<br>7.982 m² construidos</p></figcaption></figure>
+      <figure class="work"><img src="images/obras/zafiro-2.jpg" alt="Torre Zafiro 2 en Santa Cruz" loading="lazy"><figcaption><h3>Torre Zafiro 2</h3><p>Santa Cruz, Bolivia · 2010<br>6.849 m² construidos</p></figcaption></figure>
+      <figure class="work"><img src="images/obras/zafiro-1.jpg" alt="Torre Zafiro 1 en Santa Cruz" loading="lazy"><figcaption><h3>Torre Zafiro 1</h3><p>Santa Cruz, Bolivia · 2010<br>3.241 m² construidos</p></figcaption></figure>
+      <figure class="work"><img src="images/obras/antelo.jpg" alt="Vivienda Antelo en Santa Cruz" loading="lazy"><figcaption><h3>Vivienda Antelo</h3><p>Santa Cruz, Bolivia · 2017<br>654 m² construidos</p></figcaption></figure>
+      <figure class="work"><img src="images/obras/guzman-tarija.jpg" alt="Casa Guzmán en Tarija" loading="lazy"><figcaption><h3>Casa Guzmán</h3><p>Tarija, Bolivia · 2016<br>854 m² construidos</p></figcaption></figure>
+      <figure class="work"><img src="images/obras/guzman-santa-cruz.jpg" alt="Vivienda Guzmán en Santa Cruz" loading="lazy"><figcaption><h3>Vivienda Guzmán</h3><p>Santa Cruz, Bolivia · 2012<br>850 m² construidos</p></figcaption></figure>
+    </div>
+  </section>
+
   <nav class="plan" aria-label="Redes sociales">
     <a href="https://www.facebook.com/p/Constructora-Proyecto-SRL-100057228829690/?checkpoint_src=any" target="_blank" rel="noopener noreferrer">
       <span class="marker">FB</span>
@@ -277,30 +320,36 @@
       <span class="label">LinkedIn</span>
       <span class="tag">/company/constructora-proyecto</span>
     </a>
-    <a href="https://www.instagram.com/constructora_proyecto/" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.instagram.com/constructoraproyectosrl/" target="_blank" rel="noopener noreferrer">
       <span class="marker">IG</span>
       <span class="label">Instagram</span>
-      <span class="tag">@constructora_proyecto</span>
+      <span class="tag">@constructoraproyectosrl</span>
     </a>
   </nav>
 
   <nav class="plan" aria-labelledby="allies-title">
-    <h2 class="plan-title" id="allies-title">Proyectos y aliados</h2>
+    <h2 class="plan-title" id="allies-title">Aliados</h2>
     <a href="https://www.instagram.com/yery.villagomez.architects/" target="_blank" rel="noopener noreferrer">
+      <img class="ally-logo" src="logo-yery_villagomez_architects.jpg" alt="">
       <span class="marker">IG</span>
       <span class="label">Yery Villagómez Architects</span>
       <span class="tag">@yery.villagomez.architects</span>
     </a>
     <a href="https://www.instagram.com/xgroup.bo/" target="_blank" rel="noopener noreferrer">
+      <img class="ally-logo" src="logo-xgroup_bo.jpg" alt="">
       <span class="marker">IG</span>
       <span class="label">X Group</span>
       <span class="tag">@xgroup.bo</span>
     </a>
-    <a href="https://www.instagram.com/esfera.ai/" target="_blank" rel="noopener noreferrer">
-      <span class="marker">IG</span>
+    <div class="ally-card">
+      <img class="ally-logo" src="logo-esfera.png" alt="">
+      <div class="ally-links" aria-label="Enlaces de Esfera AI">
+        <a class="marker" href="https://www.instagram.com/esfera.ai/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Esfera AI">IG</a>
+        <a class="marker" href="https://esfera.ai/" target="_blank" rel="noopener noreferrer" aria-label="Sitio web de Esfera AI">WEB</a>
+      </div>
       <span class="label">Esfera AI</span>
       <span class="tag">@esfera.ai</span>
-    </a>
+    </div>
   </nav>
 </main>
 
