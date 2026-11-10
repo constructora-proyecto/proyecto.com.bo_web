@@ -219,14 +219,10 @@
     border-radius:12px; background:#fff;
   }
 
-  .ally-links{display:flex; flex-wrap:wrap; gap:10px; margin-top:2px;}
-  .ally-links a{
-    border:1px solid var(--ink); padding:8px 12px;
-    color:var(--ink); text-decoration:none;
-    font-family:'JetBrains Mono', monospace; font-size:0.72rem;
-  }
+  .ally-links{display:flex; flex-wrap:wrap; gap:10px;}
+  .ally-links a{color:var(--ink); text-decoration:none;}
   .ally-links a:hover, .ally-links a:focus-visible{
-    background:var(--ink); color:var(--paper);
+    background:var(--ink); border-color:var(--orange); color:var(--orange);
   }
 
   footer{
@@ -317,11 +313,12 @@
     </a>
     <div class="ally-card">
       <img class="ally-logo" src="logo-esfera.png" alt="">
-      <span class="label">Esfera AI</span>
       <div class="ally-links" aria-label="Enlaces de Esfera AI">
-        <a href="https://www.instagram.com/esfera.ai/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Esfera AI">IG</a>
-        <a href="https://esfera.ai/" target="_blank" rel="noopener noreferrer" aria-label="Sitio web de Esfera AI">WEB</a>
+        <a class="marker" href="https://www.instagram.com/esfera.ai/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Esfera AI">IG</a>
+        <a class="marker" href="https://esfera.ai/" target="_blank" rel="noopener noreferrer" aria-label="Sitio web de Esfera AI">WEB</a>
       </div>
+      <span class="label">Esfera AI</span>
+      <span class="tag">@esfera.ai</span>
     </div>
   </nav>
 </main>
