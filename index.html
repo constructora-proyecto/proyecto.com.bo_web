@@ -225,6 +225,22 @@
     background:var(--ink); border-color:var(--orange); color:var(--orange);
   }
 
+
+  .works{margin-top:80px; border-top:1px solid var(--line); padding-top:18px;}
+  .works-head{display:flex; justify-content:space-between; align-items:end; gap:20px; flex-wrap:wrap; margin-bottom:28px;}
+  .works-kicker{font:500 .7rem 'JetBrains Mono',monospace; letter-spacing:.12em; color:var(--blue); text-transform:uppercase; margin:0 0 12px;}
+  .works h2{font:400 clamp(2rem,5vw,4rem)/1 'Archivo Black',sans-serif; text-transform:uppercase; margin:0;}
+  .works-intro{max-width:360px; margin:0; color:#55554f; font-size:1rem;}
+  .works-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px 18px;}
+  .work{margin:0; min-width:0;}
+  .work img{display:block; width:100%; aspect-ratio:4/5; object-fit:cover; background:#ddd8cb;}
+  .work figcaption{border-bottom:1px solid var(--line); padding:14px 0 17px;}
+  .work h3{font:500 1.35rem 'Oswald',sans-serif; text-transform:uppercase; margin:0 0 7px;}
+  .work p{font:400 .7rem/1.6 'JetBrains Mono',monospace; color:#55554f; margin:0;}
+  .work a{display:inline-block; margin-top:12px; color:var(--blue); font:500 .7rem 'JetBrains Mono',monospace; text-underline-offset:4px;}
+  @media(max-width:800px){.works-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media(max-width:520px){.works-grid{grid-template-columns:1fr;}.works{margin-top:60px;}}
+
   footer{
     position:relative;
     z-index:1;
@@ -278,6 +294,21 @@
     <span>Construcción integral</span>
     <span>Alcance nacional</span>
   </div>
+
+  <section class="works" aria-labelledby="works-title">
+    <div class="works-head"><div><p class="works-kicker">Nuestro trabajo / Bolivia</p><h2 id="works-title">Obras realizadas<span style="color:var(--orange)">.</span></h2></div><p class="works-intro">Una selección de edificios y viviendas que forman parte de nuestra trayectoria.</p></div>
+    <div class="works-grid">
+      <figure class="work"><img src="images/obras/aqua.jpg" alt="Aqua Tower en Santa Cruz" loading="lazy"><figcaption><h3>Aqua Tower</h3><p>Santa Cruz, Bolivia · 2022<br>8.303 m² construidos</p><a href="https://www.instagram.com/constructoraproyectosrl/p/DdB4N-rAeJJ/" target="_blank" rel="noopener noreferrer">Ver publicación ↗</a></figcaption></figure>
+      <figure class="work"><img src="images/obras/evolution.jpg" alt="Torres Evolution en Santa Cruz" loading="lazy"><figcaption><h3>Torres Evolution</h3><p>Santa Cruz, Bolivia · 2013 · 2018 · 2023<br>29.228,26 m² construidos</p><a href="https://www.instagram.com/constructoraproyectosrl/p/Dd3yWqCgseJ/" target="_blank" rel="noopener noreferrer">Ver publicación ↗</a></figcaption></figure>
+      <figure class="work"><img src="images/obras/fragata.jpg" alt="Edificio Fragata en Santa Cruz" loading="lazy"><figcaption><h3>Edificio Fragata</h3><p>Santa Cruz, Bolivia · 2015<br>7.135 m² construidos</p><a href="https://www.instagram.com/constructoraproyectosrl/reel/DdAH_O9A4NA/" target="_blank" rel="noopener noreferrer">Ver publicación ↗</a></figcaption></figure>
+      <figure class="work"><img src="images/obras/baruch.jpg" alt="Edificio Baruch en Santa Cruz" loading="lazy"><figcaption><h3>Edificio Baruch</h3><p>Santa Cruz, Bolivia · 2013<br>7.982 m² construidos</p><a href="https://www.instagram.com/constructoraproyectosrl/p/DdBz9QRle45/" target="_blank" rel="noopener noreferrer">Ver publicación ↗</a></figcaption></figure>
+      <figure class="work"><img src="images/obras/zafiro-2.jpg" alt="Torre Zafiro 2 en Santa Cruz" loading="lazy"><figcaption><h3>Torre Zafiro 2</h3><p>Santa Cruz, Bolivia · 2010<br>6.849 m² construidos</p><a href="https://www.instagram.com/constructoraproyectosrl/reel/DdBwaM6AUc9/" target="_blank" rel="noopener noreferrer">Ver publicación ↗</a></figcaption></figure>
+      <figure class="work"><img src="images/obras/zafiro-1.jpg" alt="Torre Zafiro 1 en Santa Cruz" loading="lazy"><figcaption><h3>Torre Zafiro 1</h3><p>Santa Cruz, Bolivia · 2010<br>3.241 m² construidos</p><a href="https://www.instagram.com/constructoraproyectosrl/reel/DdBxfSxARN-/" target="_blank" rel="noopener noreferrer">Ver publicación ↗</a></figcaption></figure>
+      <figure class="work"><img src="images/obras/antelo.jpg" alt="Vivienda Antelo en Santa Cruz" loading="lazy"><figcaption><h3>Vivienda Antelo</h3><p>Santa Cruz, Bolivia · 2017<br>654 m² construidos</p><a href="https://www.instagram.com/constructoraproyectosrl/p/DdAMH5NOK1Y/" target="_blank" rel="noopener noreferrer">Ver publicación ↗</a></figcaption></figure>
+      <figure class="work"><img src="images/obras/guzman-tarija.jpg" alt="Casa Guzmán en Tarija" loading="lazy"><figcaption><h3>Casa Guzmán</h3><p>Tarija, Bolivia · 2016<br>854 m² construidos</p><a href="https://www.instagram.com/constructoraproyectosrl/p/DdAKLQTlU00/" target="_blank" rel="noopener noreferrer">Ver publicación ↗</a></figcaption></figure>
+      <figure class="work"><img src="images/obras/guzman-santa-cruz.jpg" alt="Vivienda Guzmán en Santa Cruz" loading="lazy"><figcaption><h3>Vivienda Guzmán</h3><p>Santa Cruz, Bolivia · 2012<br>850 m² construidos</p><a href="https://www.instagram.com/constructoraproyectosrl/p/DdAM8W2ju0n/" target="_blank" rel="noopener noreferrer">Ver publicación ↗</a></figcaption></figure>
+    </div>
+  </section>
 
   <nav class="plan" aria-label="Redes sociales">
     <a href="https://www.facebook.com/p/Constructora-Proyecto-SRL-100057228829690/?checkpoint_src=any" target="_blank" rel="noopener noreferrer">
